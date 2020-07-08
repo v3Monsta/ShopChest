@@ -125,6 +125,8 @@ class ShopCommandExecutor implements CommandExecutor {
                         remove(p);
                     } else if (subCommand.getName().equalsIgnoreCase("info")) {
                         info(p);
+                    } else if (subCommand.getName().equalsIgnoreCase("edit")) {
+                        edit(p, args);
                     } else if (subCommand.getName().equalsIgnoreCase("limits")) {
                         plugin.debug(p.getName() + " is viewing his shop limits: " + shopUtils.getShopAmount(p) + "/" + shopUtils.getShopLimit(p));
                         int limit = shopUtils.getShopLimit(p);
@@ -457,6 +459,13 @@ class ShopCommandExecutor implements CommandExecutor {
         } else {
             plugin.debug("Shop pre create event cancelled");
         }
+    }
+
+    private void edit(final Player p, String[] args) {
+        plugin.debug(p.getName() + " wants to edit a shop");
+        double newBuyPrice = Double.parseDouble(args[2]);
+        double newSellPrice = Double.parseDouble(args[3]);
+        ClickType.setPlayerClickType(p, new ClickType.EditClickType(newBuyPrice, newSellPrice));
     }
 
     /**

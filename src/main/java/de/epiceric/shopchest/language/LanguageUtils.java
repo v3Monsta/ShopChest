@@ -2183,6 +2183,7 @@ public class LanguageUtils {
     private static void loadMessages() {
         // Add ShopChest Messages
         messages.add(new LocalizedMessage(Message.SHOP_CREATED, langConfig.getString("message.shop-created", "&6You were withdrawn &c%CREATION-PRICE% &6to create this shop.")));
+        messages.add(new LocalizedMessage(Message.SHOP_EDITED, langConfig.getString("message.shop-edited", "&6Successfully edited the shop")));
         messages.add(new LocalizedMessage(Message.ADMIN_SHOP_CREATED, langConfig.getString("message.admin-shop-created", "&6You were withdrawn &c%CREATION-PRICE% &6to create this admin shop.")));
         messages.add(new LocalizedMessage(Message.CHEST_ALREADY_SHOP, langConfig.getString("message.chest-already-shop", "&cChest already shop.")));
         messages.add(new LocalizedMessage(Message.CHEST_BLOCKED, langConfig.getString("message.chest-blocked", "&cThere must not be a block above the chest.")));

@@ -2,6 +2,9 @@
 # Usable Placeholders: %CREATION-PRICE%
 message.shop-created=&6You were withdrawn &c%CREATION-PRICE% &6to create this shop.
 
+# Set the message when a shop is edited at the clicked chest.
+message.shop-edited=&6Successfully edited the shop.
+
 # Set the message when an admin shop is created at the clicked chest.
 # Usable Placeholders: %CREATION-PRICE%
 message.admin-shop-created=&6You were withdrawn &c%CREATION-PRICE% &6to create this admin shop.
