@@ -602,6 +602,9 @@ public class ShopInteractListener implements Listener {
         }
 
         shopUtils.editShop(shop, newBuyPrice, newSellPrice, null);
+        shop.setBuyPrice(newBuyPrice);
+        shop.setSellPrice(newSellPrice);
+        shop.updateHologramText();
         plugin.debug(" Edited shop (# " + shop.getID() + ")");
         executor.sendMessage(LanguageUtils.getMessage(Message.SHOP_EDITED,
                 new Replacement(Placeholder.VENDOR, shop.getVendor().getName())));
