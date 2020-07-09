@@ -298,6 +298,10 @@ message.commandDescription.remove=&a/%COMMAND% remove - Remove a shop.
 # Usable Placeholders: %COMMAND%
 message.commandDescription.info=&a/%COMMAND% info - Retrieve shop information.
 
+# Set the command description message for `/shop edit' when you type '/shop'.
+# Usable Placeholders: %COMMAND%
+message.commandDescription.edit=&a/%COMMAND% edit - Edit a shop
+
 # Set the command description message for '/shop removeall' when you type '/shop'.
 # Usable Placeholders: %COMMAND%
 message.commandDescription.removeall=&a/%COMMAND% removeall - Remove all shops of a player.
