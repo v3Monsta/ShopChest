@@ -38,12 +38,12 @@ public class Shop {
         ADMIN,
     }
 
-    public static class PreCreateResult {
+    private static class PreCreateResult {
         private final Inventory inventory;
         private final Chest[] chests;
         private final BlockFace face;
 
-        public PreCreateResult(Inventory inventory, Chest[] chests, BlockFace face) {
+        private PreCreateResult(Inventory inventory, Chest[] chests, BlockFace face) {
             this.inventory = inventory;
             this.chests = chests;
             this.face = face;
@@ -54,11 +54,9 @@ public class Shop {
     private final OfflinePlayer vendor;
     private final ShopProduct product;
     private final Location location;
-
-    private  double buyPrice;
-
-    private  double sellPrice;
     private final ShopType shopType;
+    private double buyPrice;
+    private double sellPrice;
     private boolean created;
 
     private int id;
@@ -192,7 +190,7 @@ public class Shop {
      * Runs everything that needs to be called synchronously in order
      * to prepare creating the hologram.
      */
-    public PreCreateResult preCreateHologram() {
+    private PreCreateResult preCreateHologram() {
         plugin.debug("Creating hologram (#" + id + ")");
 
         InventoryHolder ih = getInventoryHolder();
@@ -225,7 +223,7 @@ public class Shop {
     /**
      * Acuatlly creates the hologram (async)
      */
-    public void createHologram(PreCreateResult preResult) {
+    private void createHologram(PreCreateResult preResult) {
         String[] holoText = getHologramText(preResult.inventory);
         holoLocation = getHologramLocation(preResult.chests, preResult.face);
 

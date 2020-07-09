@@ -126,7 +126,11 @@ class ShopCommandExecutor implements CommandExecutor {
                     } else if (subCommand.getName().equalsIgnoreCase("info")) {
                         info(p);
                     } else if (subCommand.getName().equalsIgnoreCase("edit")) {
-                        edit(p, args);
+                        if (args.length >= 3) {
+                            edit(p, args);
+                        } else {
+                            return false;
+                        }
                     } else if (subCommand.getName().equalsIgnoreCase("limits")) {
                         plugin.debug(p.getName() + " is viewing his shop limits: " + shopUtils.getShopAmount(p) + "/" + shopUtils.getShopLimit(p));
                         int limit = shopUtils.getShopLimit(p);
@@ -332,7 +336,7 @@ class ShopCommandExecutor implements CommandExecutor {
     }
 
     /**
-     * <b>SHALL ONLY BE CALLED VIA {@link ShopCommand#createShopAfterSelected()}</b>
+     * <b>SHALL ONLY BE CALLED VIA {@link ShopCommand#createShopAfterSelected(Player, SelectClickType)} ()}</b>
      */
     protected void create2(Player p, SelectClickType selectClickType) {
         ItemStack itemStack = selectClickType.getItem();
@@ -461,10 +465,26 @@ class ShopCommandExecutor implements CommandExecutor {
         }
     }
 
+    /**
+     * A given player edits a shop
+     * @param p The command executor
+     * @param args The new prices of the shop
+     */
     private void edit(final Player p, String[] args) {
         plugin.debug(p.getName() + " wants to edit a shop");
-        double newBuyPrice = Double.parseDouble(args[2]);
-        double newSellPrice = Double.parseDouble(args[3]);
+        double newBuyPrice;
+        double newSellPrice;
+        try {
+             newBuyPrice = Double.parseDouble(args[1]);
+             newSellPrice = Double.parseDouble(args[2]);
+        } catch (NumberFormatException ex) {
+            p.sendMessage(LanguageUtils.getMessage(Message.AMOUNT_PRICE_NOT_NUMBER));
+            plugin.debug(p.getName() + " has entered an invalid prices");
+            return;
+        }
+
+        plugin.debug(p.getName() + " can now click a chest");
+        p.sendMessage(LanguageUtils.getMessage(Message.CLICK_CHEST_EDIT));
         ClickType.setPlayerClickType(p, new ClickType.EditClickType(newBuyPrice, newSellPrice));
     }
 

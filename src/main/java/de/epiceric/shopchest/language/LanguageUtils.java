@@ -2339,6 +2339,7 @@ public class LanguageUtils {
         messages.add(new LocalizedMessage(Message.CLICK_CHEST_CREATE, langConfig.getString("message.click-chest-to-create-shop", "&aClick a chest within 15 seconds to create a shop.")));
         messages.add(new LocalizedMessage(Message.CLICK_CHEST_REMOVE, langConfig.getString("message.click-chest-to-remove-shop", "&aClick a shop within 15 seconds to remove it.")));
         messages.add(new LocalizedMessage(Message.CLICK_CHEST_INFO, langConfig.getString("message.click-chest-for-info", "&aClick a shop within 15 seconds to retrieve information.")));
+        messages.add(new LocalizedMessage(Message.CLICK_CHEST_EDIT, langConfig.getString("message.click-chest6-for-edit", "&aClick a shop within 15 seconds to edit")));
         messages.add(new LocalizedMessage(Message.CLICK_CHEST_OPEN, langConfig.getString("message.click-chest-to-open-shop", "&aClick a shop within 15 seconds to open it.")));
         messages.add(new LocalizedMessage(Message.CLICK_TO_CONFIRM, langConfig.getString("message.click-to-confirm", "&aClick again to confirm.")));
         messages.add(new LocalizedMessage(Message.OPENED_SHOP, langConfig.getString("message.opened-shop", "&aYou opened %VENDOR%'s shop.")));
@@ -2383,7 +2384,7 @@ public class LanguageUtils {
         messages.add(new LocalizedMessage(Message.COMMAND_DESC_CREATE, langConfig.getString("message.commandDescription.create", "&a/%COMMAND% create <amount> <buy-price> <sell-price> - Create a shop.")));
         messages.add(new LocalizedMessage(Message.COMMAND_DESC_CREATE_ADMIN, langConfig.getString("message.commandDescription.create-admin", "&a/%COMMAND% create <amount> <buy-price> <sell-price> [admin] - Create a shop.")));
         messages.add(new LocalizedMessage(Message.COMMAND_DESC_REMOVE, langConfig.getString("message.commandDescription.remove", "&a/%COMMAND% remove - Remove a shop.")));
-        messages.add(new LocalizedMessage(Message.COMMAND_DESC_EDIT, langConfig.getString("message.commandDescription.remove", "&a/%COMMAND% edit - Edit a shop")));
+        messages.add(new LocalizedMessage(Message.COMMAND_DESC_EDIT, langConfig.getString("message.commandDescription.edit", "&a/%COMMAND% edit <new-buy-price> <new-sell-price> - Edit a shop")));
         messages.add(new LocalizedMessage(Message.COMMAND_DESC_INFO, langConfig.getString("message.commandDescription.info", "&a/%COMMAND% info - Retrieve shop information.")));
         messages.add(new LocalizedMessage(Message.COMMAND_DESC_REMOVEALL, langConfig.getString("message.commandDescription.removeall", "&a/%COMMAND% removeall - Remove all shops of a player.")));
         messages.add(new LocalizedMessage(Message.COMMAND_DESC_RELOAD, langConfig.getString("message.commandDescription.reload", "&a/%COMMAND% reload - Reload shops.")));
