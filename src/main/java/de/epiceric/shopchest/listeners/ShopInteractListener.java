@@ -106,22 +106,28 @@ public class ShopInteractListener implements Listener {
         Block block = event.getClickedBlock();
 
         // TODO preconditions?
+        if (block == null || block.getType() == Material.AIR) { return; }
         if (event.getAction() != Action.RIGHT_CLICK_BLOCK) { return; }
         if (block.getType() != Material.CHEST && block.getType() != Material.TRAPPED_CHEST) { return; }
-        if (!shopUtils.isShop(block.getLocation())) { return; }
-        if (!Objects.equals(shopUtils.getShop(block.getLocation()).getVendor().getPlayer(), player)) { return; }
         if (!((ClickType.getPlayerClickType(player)) instanceof ClickType.EditClickType)) { return; }
+
+        Shop shop = shopUtils.getShop(block.getLocation());
+        if (shop == null) { return; }
+        if (!shop.getVendor().equals(event.getPlayer()) || !player.hasPermission(Permissions.EDIT_OTHER)) {
+            plugin.debug(player.getName() + " is attempting to edit a shop that is not theirs");
+            player.sendMessage(LanguageUtils.getMessage(Message.NO_PERMISSION_EDIT_OTHERS));
+            event.setCancelled(true);
+            ClickType.removePlayerClickType(player);
+            return;
+        }
 
         ClickType.EditClickType clickType = (ClickType.EditClickType) ClickType.getPlayerClickType(player);
         if (clickType != null) {
-            Shop shop = shopUtils.getShop(block.getLocation());
-            if (shop != null) {
-                double newBuyPrice = clickType.getNewBuyPrice();
-                double newSellPrice = clickType.getNewSellPrice();
-                edit(player, shop, newBuyPrice, newSellPrice);
-                event.setCancelled(true);
-                ClickType.removePlayerClickType(player);
-            }
+            double newBuyPrice = clickType.getNewBuyPrice();
+            double newSellPrice = clickType.getNewSellPrice();
+            edit(player, shop, newBuyPrice, newSellPrice);
+            event.setCancelled(true);
+            ClickType.removePlayerClickType(player);
         }
     }
 

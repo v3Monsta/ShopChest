@@ -241,6 +241,9 @@ message.noPermission.create-protected=&cYou don't have permission to create a sh
 # Set the message when a not permitted player tries to open another player's shop.
 message.noPermission.open-others=&cYou don't have permission to open this chest.
 
+# Set the message when a not permitted player tries to edit another player's shop.
+message.noPermission.edit-others=&cYou don't have permission to edit this shop.
+
 # Set the message when a not permitted player tries to buy something.
 message.noPermission.buy=&cYou don't have permission to buy something.
 
